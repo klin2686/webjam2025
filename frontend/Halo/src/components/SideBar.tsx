@@ -16,7 +16,7 @@ const SideBar = () => {
   const [activeElement, setActiveElement] = React.useState<string>("Dashboard");
 
   return (
-    <div className="h-full w-64 relative bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">
+    <div className="h-full w-full relative bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">
       <div className="flex flex-col justify-start p-4">
         <SideBarProfile picture={defaultUser} name="John Doe" />
         <div className="flex justify-center w-full">

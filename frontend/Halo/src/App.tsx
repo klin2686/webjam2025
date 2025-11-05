@@ -15,13 +15,13 @@ const App = () => {
       <div className="relative z-10 h-screen w-screen flex flex-col">
         <div className="h-screen w-screen pt-4 px-8">
           <TopBar />
-          <div className="h-71/80 grid grid-cols-3 pt-4">
+          <div className="h-71/80 grid grid-cols-[2fr_6fr_3fr] gap-4 pt-4">
             <SideBar />
-            <div className="grid grid-rows-2">
-              <div>test</div>
-              <div>test</div>
+            <div className="grid grid-rows-[2fr_3fr] gap-4">
+              <div className="bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">test top</div>
+              <div className="bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">test bottom</div>
             </div>
-            <div>test</div>
+            <div className="bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">test right</div>
           </div>
         </div>
       </div>
