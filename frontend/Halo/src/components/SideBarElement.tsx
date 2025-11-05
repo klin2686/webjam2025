@@ -4,30 +4,26 @@ interface SideBarElementProps {
   element: string;
   logo: string;
   active: boolean;
+  isLifted: boolean;
   onClick: () => void;
 }
 
 const SideBarElement = ({
   element,
   logo,
-  active,
   onClick,
+  active,
+  isLifted,
 }: SideBarElementProps) => {
   return (
     <div
-      className={`flex flex-row items-center cursor-pointer p-2 space-x-4`}
+      className={`relative flex flex-row items-center cursor-pointer p-4 space-x-4 transition-transform duration-500 ease-in-out ${
+        active && isLifted ? "-translate-y-1" : ""
+      }`}
       onClick={onClick}
     >
-      <div
-        className={`flex flex-row p-2 w-full h-auto items-center rounded-lg ${
-          active
-            ? "bg-sky-500/30 shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50"
-            : ""
-        }`}
-      >
-        <img src={logo} alt={`${element} icon`} className="w-6 h-6" />
-        <div className="text-black text-sm font-sf-pro pl-4">{element}</div>
-      </div>
+      <img src={logo} alt={`${element} icon`} className="w-6 h-6" />
+      <div className="text-black text-sm font-sf-pro pl-4">{element}</div>
     </div>
   );
 };
