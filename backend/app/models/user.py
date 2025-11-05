@@ -28,14 +28,12 @@ class User(db.Model):
     def __init__(
         self, 
         email: str,
-        password_hash: Optional[str] = None,
         google_id: Optional[str] = None,
         name: Optional[str] = None,
         email_verified: bool = False,
         profile_picture: Optional[str] = None
     ):
         self.email = email
-        self.password_hash = password_hash
         self.google_id = google_id
         self.name = name
         self.email_verified = email_verified
