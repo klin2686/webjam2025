@@ -13,6 +13,7 @@ llm_bp = Blueprint('llm', __name__)
 
 @llm_bp.route('/process-menu', methods=['POST'])
 def process_menu():
+    """Process uploaded menu image and extract items with allergens using Gemini"""
     if "menu_image" not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
     image_file = request.files["menu_image"]
@@ -61,6 +62,7 @@ def process_menu():
 
 
 def preprocess_image(image_file, max_size=2048, enhance=True):
+    """Preprocess and optimize image for Gemini processing"""
     img = Image.open(image_file)
 
     if img.mode != 'RGB':
@@ -85,6 +87,7 @@ def preprocess_image(image_file, max_size=2048, enhance=True):
 
 
 def image_to_bytes(img, format='JPEG', quality=95):
+    """Convert PIL Image to bytes for API transmission"""
     buffer = io.BytesIO()
     try:
         img.save(buffer, format=format, quality=quality)
