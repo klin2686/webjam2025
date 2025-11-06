@@ -100,8 +100,8 @@ const UserLogin = () => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
-                  placeholder="John Doe"
+                  className="w-full px-4 py-3 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
+                  placeholder="Type your name"
                 />
               </div>
             )}
@@ -118,7 +118,7 @@ const UserLogin = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
+                className="w-full px-4 py-3 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
                 placeholder="Type your email"
                 required
               />
@@ -136,7 +136,7 @@ const UserLogin = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
+                className="w-full px-4 py-3 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
                 placeholder="Type your password"
                 required
               />
