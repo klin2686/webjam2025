@@ -29,7 +29,7 @@ class Config:
             CORS_ORIGINS = '*'
 
     GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
-    GOOGLE_REDIRECT_URI = os.environ.get('GOOGLE_REDIRECT_URI', 'http://localhost:5173/auth/callback')
+    GOOGLE_REDIRECT_URI = os.environ.get('GOOGLE_REDIRECT_URI', 'http://localhost:5173')
 
 class DevelopmentConfig(Config):
     """Development configuration"""
