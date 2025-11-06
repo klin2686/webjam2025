@@ -1,12 +1,12 @@
 import React from "react";
-import logoSvg from "../assets/logo.svg";
+import haloLogo from "../assets/haloLogo.svg";
 
 const TopBar = ({}) => {
   return (
     <div className="w-full mx-auto h-20 bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 overflow-y overflow-x">
       <div className="flex items-center justify-between h-full px-[1.5rem] lg:px-[1.5rem]">
-        <div className="flex items-center -space-x-8">
-          <img src={logoSvg} alt="Logo" className="w-28 h-28 pt-[2rem]" />
+        <div className="flex items-center space-x-[1rem]">
+          <img src={haloLogo} alt="Logo" className="w-[3rem] h-[3rem]" />
           <div className="text-black text-2xl lg:text-3xl font-sf-pro font-semibold">
             Halo
           </div>
