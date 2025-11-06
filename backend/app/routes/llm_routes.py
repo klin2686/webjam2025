@@ -54,6 +54,7 @@ gemini_image_prompt = (
     'from this set (spelled and capitalized as shown in the set): ' + str(STANDARD_ALLERGENS) + '. '
     'Use "None" if no common allergens are present and "Unknown" if uncertain from the name alone. '
     'Also for each item, include a confidence score from 1 to 10 (inclusive) on how confident you are in the listed allergens for that item. '
+    'If any item is labeled as unknown, the confidence score should be zero. '
     'If the menu is unreadable (cannot accurately extract 90+% of the items), return a single object array with "__ERROR__" in all properties.'
 )
 gemini_text_prompt = (
