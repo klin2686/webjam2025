@@ -7,6 +7,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from app.models import UserAllergy
 
+STANDARD_ALLERGENS = {"milk", "eggs", 'fish', 'shellfish', 'tree nuts', 'peanuts', 'wheat', 'soybeans', 'sesame'}
+
 
 class Allergen(db.Model):
     __tablename__ = 'allergens'

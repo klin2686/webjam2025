@@ -2,23 +2,22 @@ from flask import Blueprint, jsonify, request
 from sqlalchemy import select
 from app.extensions import db
 from app.utils.jwt_utils import token_required
-from app.models import UserAllergy, Allergen
-allergies_bp = Blueprint('allergies',__name__)
+from app.models import UserAllergy, Allergen, STANDARD_ALLERGENS
 
-ALLERGEN_SET = {"milk", "eggs", 'fish', 'shellfish', 'tree nuts', 'peanuts', 'wheat', 'soybeans', 'sesame'}
+allergy_bp = Blueprint('allergies',__name__)
 
 
-@allergies_bp.route('/allergies/add', methods=['POST'])
+@allergy_bp.route('/allergies/add', methods=['POST'])
 @token_required
 def add(current_user):
     data = request.get_json()
     if not data:
         return jsonify({'error': 'No json body provided'}), 400
 
-    food_name = data.get('allergen_name').strip().lower()
-    if not food_name:
+    allergen_name = data.get('allergen_name').strip().lower()
+    if not allergen_name:
         return jsonify({'error': 'No allergen_name provided'}), 400
-    if food_name not in ALLERGEN_SET:
+    if allergen_name not in STANDARD_ALLERGENS:
         return jsonify({'error': 'Invalid allergen_name'}), 400
 
     try:
@@ -30,22 +29,26 @@ def add(current_user):
     if not 1 <= food_severity <= 3:
         return jsonify({'error': 'Invalid allergy severity'}), 400
 
-    stmt = select(UserAllergy).join(Allergen).where(UserAllergy.user_id == current_user.id).where(Allergen.name == food_name)
-    allergy = db.session.execute(stmt).scalar_one_or_none()
+    stmt = select(Allergen).where(Allergen.name == allergen_name)
+    allergen = db.session.execute(stmt).scalar_one_or_none()
+    if not allergen:
+        return jsonify({'error': 'Allergen not found'}), 500
 
-    if allergy:
-        return jsonify({'error': 'Allergy already exists'}), 400
+    stmt = select(UserAllergy).where(UserAllergy.user_id == current_user.id).where(UserAllergy.allergen_id == allergen.id)
+    user_allergy = db.session.execute(stmt).scalar_one_or_none()
+    if user_allergy:
+        return jsonify({'error': 'User allergy already exists'}), 400
 
-    new_user_allergy = UserAllergy(current_user.id, allergy.id, food_severity)
+    new_user_allergy = UserAllergy(user_id=current_user.id, allergen_id=allergen.id, severity=food_severity)
     db.session.add(new_user_allergy)
     db.session.commit()
     return jsonify({
         'message': 'Allergy created successfully',
-        'user_allergy': allergy.to_dict
+        'user_allergy': new_user_allergy.to_dict()
     }), 201
 
 
-@allergies_bp.route('/allergies/update', methods=['PUT'])
+@allergy_bp.route('/allergies/update', methods=['PUT'])
 @token_required
 def update(current_user):
     data = request.get_json()
@@ -73,20 +76,20 @@ def update(current_user):
     user_allergy = db.session.get(UserAllergy, user_allergy_id)
 
     if not user_allergy:
-        return jsonify({'error': 'User_allergy association not found'}), 400
+        return jsonify({'error': 'User allergy not found'}), 400
 
     if user_allergy.user_id != current_user.id:
-        return jsonify({'error': 'Current user does not own the given user_allergy'}), 401
+        return jsonify({'error': 'Current user does not own the given user allergy'}), 401
 
     user_allergy.severity = severity
     db.session.commit()
     return jsonify({
-        'message': 'User_allergy severity updated successfully',
+        'message': 'User allergy severity updated successfully',
         'user_allergy': user_allergy.to_dict()
     }), 200
 
 
-@allergies_bp.route('/allergies/delete', methods=['DELETE'])
+@allergy_bp.route('/allergies/delete', methods=['DELETE'])
 @token_required
 def delete(current_user):
     data = request.get_json()

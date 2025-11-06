@@ -3,12 +3,7 @@ from sqlalchemy import select
 from app.utils.validators import validate_email_address, validate_password_strength
 from app.extensions import db
 from app.models import User
-from app.utils.jwt_utils import (
-    generate_access_token, 
-    generate_refresh_token, 
-    decode_token,
-    token_required
-)
+from app.utils.jwt_utils import generate_access_token, generate_refresh_token, decode_token, token_required
 from app.utils.google_oauth import verify_google_token
 
 auth_bp = Blueprint('auth', __name__)
