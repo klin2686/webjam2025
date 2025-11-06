@@ -10,9 +10,9 @@ interface FoodItemsProps {
 
 const FoodItems = () => {
   return (
-    <div className="flex flex-col h-[38rem] w-full bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 overflow-hidden relative">
+    <div className="flex flex-col h-full w-full bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 overflow-hidden relative">
       <FoodItemsSearch />
-      <div className="grid grid-cols-2 place-items-center pt-[6.125rem] px-6 pb-6 overflow-y-auto overflow-x-visible no-scrollbar">
+      <div className="grid grid-cols-2 place-items-center pt-[6.125rem] px-[1.5rem] pb-[1.5rem] overflow-y-auto overflow-x-visible no-scrollbar">
         <FoodItemCard
           food="Pizza"
           confidence={8.5}

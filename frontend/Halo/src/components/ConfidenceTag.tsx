@@ -30,7 +30,7 @@ const ConfidenceTag = ({ confidence, text }: ConfidenceTagProps) => {
     <div
       className={`h-[1.125rem] w-[5rem] rounded-full ${getConfidenceColor(
         confidence
-      )} flex items-center justify-center gap-1`}
+      )} flex items-center justify-center gap-[0.25rem]`}
     >
       <div className={`w-2 h-2 rounded-full ${getDotColor(confidence)}`} />
       <span className="text-sm text-black font-light font-sf-pro">{text}</span>
