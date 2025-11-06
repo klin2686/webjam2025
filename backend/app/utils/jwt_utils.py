@@ -11,7 +11,7 @@ def generate_access_token(user_id: int) -> str:
     """Generate JWT access token"""
     payload = {
         'user_id': user_id,
-        'exp': datetime.now(timezone.utc) + timedelta(hours=1),
+        'exp': datetime.now(timezone.utc) + timedelta(hours=48),
         'iat': datetime.now(timezone.utc),
         'type': 'access'
     }
