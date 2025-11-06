@@ -2,7 +2,7 @@ import TopBar from "./components/TopBar";
 import backgroundImage from "./assets/background.jpg";
 import SideBar from "./components/SideBar";
 import RestaurantInput from "./components/RestaurantInput";
-import FoodItemsSection from "./components/FoodItemSection";
+import FoodItemsSection from "./components/FoodItems";
 import AllergyBar from "./components/AllergyBar";
 
 const App = () => {
