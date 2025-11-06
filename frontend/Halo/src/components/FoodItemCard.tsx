@@ -10,7 +10,7 @@ interface FoodItemCardProps {
 
 const FoodItemCard = ({ food, confidence, allergens }: FoodItemCardProps) => {
   return (
-    <div className="w-9/10 h-[8rem] rounded-xl bg-white backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-[1.5rem] my-[1rem]">
+    <div className="w-9/10 min-h-[8rem] rounded-xl bg-white backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-[1.5rem] my-[1rem]">
       <div className="flex items-center justify-between text-black font-sf-pro font-semibold text-xl">
         <div>{food}</div>
         <ConfidenceTag confidence={confidence} text={confidence.toString()} />
