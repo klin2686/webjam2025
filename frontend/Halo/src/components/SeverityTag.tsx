@@ -23,7 +23,7 @@ const SeverityTag = ({ severity, text }: SeverityTagProps) => {
     <div
       className={`h-[1.125rem] w-[5rem] rounded-full ${getSeverityColor(
         severity
-      )} flex items-center justify-center gap-1`}
+      )} flex items-center justify-center gap-[0.25rem]`}
     >
       <div
         className={`w-2 h-2 rounded-full ${

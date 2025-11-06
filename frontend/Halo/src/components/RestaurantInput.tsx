@@ -2,12 +2,12 @@ import React from "react";
 
 const RestaurantInput = () => {
   return (
-    <div className="h-full w-full bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm border border-white/50 flex flex-col items-center justify-center gap-4 p-4">
+    <div className="h-full w-full bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm border border-white/50 flex flex-col items-center justify-center gap-[1rem] p-[1rem]">
       <div className="grid grid-cols-[2fr_1fr] gap-[1rem] items-start w-full h-full">
-        <div className="h-full w-full rounded-xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-6"></div>
+        <div className="h-full w-full rounded-xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-[1.5rem]"></div>
         <div className="grid grid-rows-2 gap-[1rem] items-start w-full h-full">
-          <button className="w-full h-full bg-[#b5d3dc] border border-white/50 rounded-2xl flex items-center justify-center gap-3 hover:bg-[#a5c3cc] transition-colors">
-            <span className="text-black text-2xl font-sf-pro">Upload Menu</span>
+          <button className="justify-between w-full h-full border backdrop-blur-sm border-white/50 rounded-2xl flex items-center justify-center gap-[0.75rem] shadow-xl">
+            <span className="text-black text-xl font-sf-pro">Upload Menu</span>
             <svg
               width="32"
               height="32"
@@ -25,10 +25,8 @@ const RestaurantInput = () => {
               />
             </svg>
           </button>
-          <button className="w-full h-full bg-white border border-white/50 rounded-2xl flex items-center justify-center gap-3 hover:bg-[#a5c3cc] transition-colors">
-            <span className="text-black text-2xl font-sf-pro">
-              Manual Input
-            </span>
+          <button className="justify-between w-full h-full backdrop-blur-sm border border-white/50 rounded-2xl flex items-center justify-center gap-[0.75rem] shadow-xl">
+            <span className="text-black text-xl font-sf-pro">Manual Input</span>
             <svg
               width="32"
               height="32"

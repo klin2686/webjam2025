@@ -49,7 +49,7 @@ const SideBar = () => {
 
   return (
     <div className="h-full w-full relative bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 overflow-y overflow-x">
-      <div className="flex flex-col justify-start p-4">
+      <div className="flex flex-col justify-start p-[1rem]">
         {isInitialized && (
           <div
             className={`absolute backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 rounded-lg pointer-events-none transition-all ease-in-out duration-500 ${
@@ -67,7 +67,7 @@ const SideBar = () => {
 
         <SideBarProfile picture={defaultUser} name="John Doe" />
         <div className="flex justify-center w-full">
-          <hr className="w-9/10 justify-center pt-4"></hr>
+          <hr className="w-9/10 justify-center pt-[1rem]"></hr>
         </div>
 
         <div
@@ -112,7 +112,7 @@ const SideBar = () => {
 
         <br></br>
         <div className="flex justify-center w-full">
-          <hr className="w-9/10 justify-center pt-4"></hr>
+          <hr className="w-9/10 justify-center pt-[1rem]"></hr>
         </div>
 
         <div
@@ -156,9 +156,9 @@ const SideBar = () => {
         </div>
         <br></br>
         <div className="flex justify-center w-full">
-          <hr className="w-9/10 justify-center pt-4"></hr>
+          <hr className="w-9/10 justify-center pt-[1rem]"></hr>
         </div>
-        <div className="flex flex-col justify-end absolute bottom-0 w-full p-4">
+        <div className="flex flex-col justify-end absolute bottom-0 w-full p-[1rem]">
           <SideBarElement
             element="Dark Mode"
             logo={sidebarColor}

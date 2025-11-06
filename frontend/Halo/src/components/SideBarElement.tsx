@@ -17,13 +17,13 @@ const SideBarElement = ({
 }: SideBarElementProps) => {
   return (
     <div
-      className={`relative flex flex-row items-center cursor-pointer p-4 space-x-4 transition-transform duration-500 ease-in-out ${
+      className={`relative flex flex-row items-center cursor-pointer p-[1rem] space-x-[1rem] transition-transform duration-500 ease-in-out ${
         active && isLifted ? "-translate-y-1" : ""
       }`}
       onClick={onClick}
     >
       <img src={logo} alt={`${element} icon`} className="w-6 h-6 ml-4" />
-      <div className="text-black text-md font-sf-pro pl-4">{element}</div>
+      <div className="text-black text-md font-sf-pro pl-[1rem]">{element}</div>
     </div>
   );
 };
