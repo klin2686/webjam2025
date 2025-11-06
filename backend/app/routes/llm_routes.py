@@ -133,3 +133,31 @@ response_schema = types.Schema(
     type=types.Type.ARRAY,
     items=menu_item_schema
 )
+
+@llm_bp.route('/manual_input', methods = ['POST'])
+def process_manual():
+    data = request.get_json()
+
+    food = data.get('manual_input')
+    if not food:
+        return jsonify({'error': 'Food was not given'}), 400
+    try:
+        food = str(data.get('manual_input'))
+    except:
+        return jsonify({'error': 'Food must be a string'}), 400
+    
+    client = genai.Client()
+    response = client.models.generate_content(
+        model = "gemini-2.5-flash",
+        contents = f'for {food} please itemize the list of ingredients. {gemini_prompt[54:619]}',
+        config={
+            "response_mime_type": "application/json",
+            "response_schema": response_schema,
+        },
+        )
+    if response.text:
+        parsed_data = json.loads(response.text)
+        
+        return jsonify(parsed_data)
+    else:
+        return jsonify({"error": "No response from Gemini"}), 500
