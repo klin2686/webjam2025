@@ -7,14 +7,30 @@ from app.models import UserAllergy, Allergen, STANDARD_ALLERGENS
 allergy_bp = Blueprint('allergy',__name__)
 
 
+@allergy_bp.route('/allergy/get', methods=['GET'])
+@token_required
+def get_allergy(current_user):
+    """Retrieve all allergies for the current user"""
+    stmt = select(UserAllergy).where(UserAllergy.user_id == current_user.id).order_by(UserAllergy.severity.desc())
+    user_allergies = db.session.scalars(stmt).all()
+    return jsonify({
+        'message': 'Allergies retrieved successfully',
+        'user_allergy': [user_allergy.to_dict() for user_allergy in user_allergies]
+    }), 200
+
 @allergy_bp.route('/allergy/add', methods=['POST'])
 @token_required
-def add(current_user):
+def add_allergy(current_user):
+    """Add a new allergy for the current user"""
     data = request.get_json()
     if not data:
         return jsonify({'error': 'No json body provided'}), 400
 
-    allergen_name = data.get('allergen_name').strip().lower()
+    allergen_name = data.get('allergen_name')
+    if isinstance(allergen_name, str):
+        allergen_name = allergen_name.strip().lower()
+    else:
+        return jsonify({'error': 'allergen_name must be a string'}), 400
     if not allergen_name:
         return jsonify({'error': 'No allergen_name provided'}), 400
     if allergen_name not in STANDARD_ALLERGENS:
@@ -32,7 +48,7 @@ def add(current_user):
     stmt = select(Allergen).where(Allergen.name == allergen_name)
     allergen = db.session.execute(stmt).scalar_one_or_none()
     if not allergen:
-        return jsonify({'error': 'Allergen not found'}), 500
+        return jsonify({'error': 'Allergen not found'}), 404
 
     stmt = select(UserAllergy).where(UserAllergy.user_id == current_user.id).where(UserAllergy.allergen_id == allergen.id)
     user_allergy = db.session.execute(stmt).scalar_one_or_none()
@@ -50,7 +66,8 @@ def add(current_user):
 
 @allergy_bp.route('/allergy/update', methods=['PUT'])
 @token_required
-def update(current_user):
+def update_allergy(current_user):
+    """Update the severity of an existing allergy"""
     data = request.get_json()
     if not data:
         return jsonify({'error': 'No json body provided'}), 400
@@ -91,7 +108,8 @@ def update(current_user):
 
 @allergy_bp.route('/allergy/delete', methods=['DELETE'])
 @token_required
-def delete(current_user):
+def delete_allergy(current_user):
+    """Delete an allergy for the current user"""
     data = request.get_json()
     if not data:
         return jsonify({'error': 'No json body provided'}), 400
@@ -107,11 +125,11 @@ def delete(current_user):
     user_allergy = db.session.get(UserAllergy, user_allergy_id)
 
     if not user_allergy:
-        return jsonify({'error': 'User_allergy association not found'}), 400
+        return jsonify({'error': 'User_allergy association not found'}), 404
 
     if user_allergy.user_id != current_user.id:
         return jsonify({'error': 'Current user does not own the given user_allergy'}), 401
 
     db.session.delete(user_allergy)
     db.session.commit()
-    return jsonify({'message': 'User_allergy successfully deleted'}), 204
+    return '', 204
