@@ -1,5 +1,6 @@
 import React from "react";
 import AllergyCard from "./AllergyCard";
+import { AllergyList } from "./AllergyList";
 
 const AllergyBar = () => {
   return (
@@ -13,9 +14,13 @@ const AllergyBar = () => {
           <hr className="w-9/10 justify-center pt-[1rem]"></hr>
         </div>
 
-        <AllergyCard allergen="Peanuts" severity="severe" />
-        <AllergyCard allergen="Shellfish" severity="moderate" />
-        <AllergyCard allergen="Soy" severity="mild" />
+        {AllergyList.map((allergy) => (
+          <AllergyCard
+            id={allergy.id}
+            allergen={allergy.allergen}
+            severity={allergy.severity}
+          />
+        ))}
 
         <div className="flex gap-[1rem] mt-[1rem] mb-[1rem]">
           <button className="w-[3rem] h-[3rem] backdrop-blur-sm border border-white/50 rounded-full flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all">

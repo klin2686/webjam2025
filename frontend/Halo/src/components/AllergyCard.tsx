@@ -2,6 +2,7 @@ import React from "react";
 import SeverityTag from "./SeverityTag";
 
 interface AllergyCardProps {
+  id: number;
   allergen: string;
   severity: string;
 }
