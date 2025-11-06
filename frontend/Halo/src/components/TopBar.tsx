@@ -3,7 +3,7 @@ import logoSvg from "../assets/logo.svg";
 
 const TopBar = ({}) => {
   return (
-    <div className="w-full mx-auto h-20 bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">
+    <div className="w-full mx-auto h-20 bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">
       <div className="flex items-center justify-between h-full px-6 lg:px-6">
         <div className="flex items-center -space-x-8">
           <img src={logoSvg} alt="Logo" className="w-28 h-28 pt-8" />

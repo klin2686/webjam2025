@@ -48,11 +48,11 @@ const SideBar = () => {
   }, []);
 
   return (
-    <div className="h-full w-full relative bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">
+    <div className="h-full w-full relative bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-1px] outline-white/50 overflow-y overflow-x">
       <div className="flex flex-col justify-start p-4">
         {isInitialized && (
           <div
-            className={`absolute backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50 rounded-lg pointer-events-none transition-all ease-in-out duration-500 ${
+            className={`absolute backdrop-blur-sm outline outline-1 outline-offset-[-1px] outline-white/50 rounded-lg pointer-events-none transition-all ease-in-out duration-500 ${
               isLifted ? "shadow-xl" : ""
             }`}
             style={{

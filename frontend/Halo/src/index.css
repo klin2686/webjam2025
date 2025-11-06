@@ -1,14 +1,60 @@
 @import "tailwindcss";
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
 
-/* SF Pro font family with fallbacks */
 @font-face {
   font-family: 'SF_Pro';
-  src: local('SF Pro Display'), local('SF Pro Text'), local('Inter'), system-ui, -apple-system, sans-serif;
-  font-weight: 100 900;
+  src: url('/fonts/SF-Pro-Rounded-Regular.otf') format('opentype'),
+       local('SF Pro Rounded'),
+       local('SFProRounded-Regular');
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF_Pro';
+  src: url('/fonts/SF-Pro-Rounded-Medium.otf') format('opentype'),
+       local('SF Pro Rounded Medium'),
+       local('SFProRounded-Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF_Pro';
+  src: url('/fonts/SF-Pro-Rounded-Semibold.otf') format('opentype'),
+       local('SF Pro Rounded Semibold'),
+       local('SFProRounded-Semibold');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF_Pro';
+  src: url('/fonts/SF-Pro-Rounded-Bold.otf') format('opentype'),
+       local('SF Pro Rounded Bold'),
+       local('SFProRounded-Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-  font-family: 'SF_Pro', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'SF_Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

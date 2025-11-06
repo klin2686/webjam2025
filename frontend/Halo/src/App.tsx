@@ -3,6 +3,7 @@ import backgroundImage from "./assets/background.jpg";
 import SideBar from "./components/SideBar";
 import RestaurantInput from "./components/RestaurantInput";
 import FoodItemsSection from "./components/FoodItemSection";
+import AllergyBar from "./components/AllergyBar";
 
 const App = () => {
   return (
@@ -23,9 +24,7 @@ const App = () => {
               <RestaurantInput />
               <FoodItemsSection />
             </div>
-            <div className="bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-2 outline-offset-[-1px] outline-white/50">
-              test right
-            </div>
+            <AllergyBar />
           </div>
         </div>
       </div>
