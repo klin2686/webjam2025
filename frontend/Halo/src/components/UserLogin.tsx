@@ -119,7 +119,7 @@ const UserLogin = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
-                placeholder="you@example.com"
+                placeholder="Type your email"
                 required
               />
             </div>
@@ -137,7 +137,7 @@ const UserLogin = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/50 rounded-xl focus:outline-none text-black font-sf-pro"
-                placeholder="••••••••"
+                placeholder="Type your password"
                 required
               />
               {!isLogin && (
