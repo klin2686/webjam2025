@@ -5,6 +5,7 @@ from PIL import Image, ImageOps, ImageEnhance
 import pillow_heif
 import io
 import json
+from app.models import STANDARD_ALLERGENS
 
 pillow_heif.register_heif_opener()
 
@@ -49,6 +50,7 @@ def process_menu():
         config={
             "response_mime_type": "application/json",
             "response_schema": response_schema,
+            "temperature": 0
         },
     )
 
@@ -61,7 +63,7 @@ def process_menu():
         return jsonify({"error": "No response from Gemini"}), 500
 
 
-def preprocess_image(image_file, max_size=2048, enhance=True):
+def preprocess_image(image_file, max_size=1536, enhance=True):
     """Preprocess and optimize image for Gemini processing"""
     img = Image.open(image_file)
 
@@ -86,11 +88,11 @@ def preprocess_image(image_file, max_size=2048, enhance=True):
     return img
 
 
-def image_to_bytes(img, format='JPEG', quality=95):
+def image_to_bytes(img, format='JPEG', quality=75):
     """Convert PIL Image to bytes for API transmission"""
     buffer = io.BytesIO()
     try:
-        img.save(buffer, format=format, quality=quality)
+        img.save(buffer, format=format, quality=quality, optimize=True)
         buffer.seek(0)
         return buffer.getvalue()
     finally:
@@ -99,17 +101,11 @@ def image_to_bytes(img, format='JPEG', quality=95):
 
 # Gemini prompt
 gemini_prompt = (
-    'Please itemize the food items on the image of a menu. Then, for each item, '
-    'identify allergens commonly found in that food item (or a similar dish). '
-    'If an item does not have any common allergens, its common_allergens property '
-    'should hold a single string "None". If you cannot determine an item\'s '
-    'common allergens, either because it\'s difficult to tell from the item name alone or '
-    'for another reason, the item\'s common_allergens property should contain a single '
-    'string "Unknown". Additionally, for each item, include a confidence score from '
-    '0 to 10 based on how confident you are about the allergens present in that item. '
-    'If the menu is blurry or unreadable where it is difficult to accurately itemize '
-    'at least 90% of the menu items, then return a JSON array with a single object '
-    'holding "__ERROR__" in both properties.'
+    'Extract all food items from this menu image. For each item, identify common allergens '
+    'from this set (spelled and capitalized as shown in the set): ' + str(STANDARD_ALLERGENS) + '. '
+    'Use "None" if no common allergens are present and "Unknown" if uncertain from the name alone. '
+    'Also for each item, include a confidence score from 1 to 10 (inclusive) on how confident you are in the listed allergens for that item. '
+    'If the menu is unreadable (cannot accurately extract 90+% of the items), return a single object array with "__ERROR__" in all properties.'
 )
 
 
@@ -126,8 +122,12 @@ menu_item_schema = types.Schema(
             items=types.Schema(type=types.Type.STRING),
             description='List of common allergens found in this food item'
         ),
+        'confidence_score': types.Schema(
+            type=types.Type.INTEGER,
+            description='Confidence in the listed allergens for this food item'
+        )
     },
-    required=["item_name", "common_allergens"]
+    required=["item_name", "common_allergens", "confidence_score"]
 )
 response_schema = types.Schema(
     type=types.Type.ARRAY,
