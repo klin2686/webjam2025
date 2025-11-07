@@ -29,7 +29,7 @@ const ManualInputPopup = ({ onClose, onMenuProcessed, onSubmitStart, onSubmitEnd
     onClose();
     onSubmitStart();
     try {
-      const data = await menuAPI.processManualInput(accessToken, items);
+      const data = await menuAPI.processManualInput(accessToken, menuTitle, items);
       console.log('Success:', data);
       onMenuProcessed(data);
     } catch (error) {

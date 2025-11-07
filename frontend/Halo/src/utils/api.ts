@@ -197,10 +197,10 @@ export const menuAPI = {
     }
   },
 
-  processManualInput: async (accessToken: string, menuItems: string[]): Promise<MenuProcessResponse> => {
+  processManualInput: async (accessToken: string, menuName: string, menuItems: string[]): Promise<MenuProcessResponse> => {
     return fetchAPI<MenuProcessResponse>('/process-manual-input', {
       method: 'POST',
-      body: JSON.stringify({ menu_items: menuItems }),
+      body: JSON.stringify({ menu_name: menuName, menu_items: menuItems }),
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
