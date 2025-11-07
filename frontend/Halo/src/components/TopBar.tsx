@@ -11,17 +11,12 @@ const TopBar = ({}) => {
             Halo
           </div>
         </div>
-        <div className="hidden md:flex items-center space-x-8 lg:space-x-16">
+        <div className="hidden md:flex items-center space-x-3 lg:space-x-6">
           <div className="text-black text-xl font-thin lg:text-2xl font-sf-pro hover:text-gray-700 transition-colors cursor-pointer">
             About
           </div>
-          <div className="text-black text-xl font-thin lg:text-2xl font-sf-pro hover:text-gray-700 transition-colors cursor-pointer">
+          <div className="text-black text-xl font-thin lg:text-2xl font-sf-pro hover:text-gray-700 transition-colors cursor-pointer px-6">
             Contact Us
-          </div>
-          <div className="bg-sky-500/30 rounded-full px-[2rem] py-[0.5rem] outline outline-1 outline-offset-[-0.0625rem] outline-white/25 hover:bg-sky-500/40 transition-colors cursor-pointer">
-            <div className="text-black text-xl lg:text-2xl font-bold font-sf-pro">
-              Sign In
-            </div>
           </div>
         </div>
         <div className="md:hidden">
