@@ -171,7 +171,7 @@ const UserLogin = () => {
             <button
               type="submit"
               disabled={isSubmitting || isLoading}
-              className="w-full py-3 bg-sky-500/50 rounded-xl border border-white/50 text-black font-sf-pro font-bold text-lg shadow-xl"
+              className="cursor-pointer w-full py-3 bg-sky-500/50 rounded-xl border border-white/50 text-black font-sf-pro font-bold text-lg shadow-xl"
             >
               {isSubmitting || isLoading ? (
                 <span className="flex items-center justify-center">
@@ -214,7 +214,7 @@ const UserLogin = () => {
           <button
             type="button"
             disabled={isSubmitting || isLoading}
-            className="w-full py-3 bg-white/50 rounded-xl border border-white/50 text-black font-sf-pro font-medium shadow-xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="cursor-pointer w-full py-3 bg-white/50 rounded-xl border border-white/50 text-black font-sf-pro font-medium shadow-xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={() => handleGoogleLogin()}
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -248,7 +248,7 @@ const UserLogin = () => {
               <button
                 type="button"
                 onClick={toggleMode}
-                className="text-sky-600 font-semibold hover:text-sky-700 transition-colors"
+                className="cursor-pointer text-sky-600 font-semibold hover:text-sky-700 transition-colors"
               >
                 {isLogin ? "Sign up" : "Sign in"}
               </button>
