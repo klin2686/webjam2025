@@ -253,4 +253,19 @@ export const allergyAPI = {
       }),
     });
   },
+
+  deleteAllergy: async (
+    accessToken: string,
+    allergyId: number
+  ): Promise<{ message: string }> => {
+    return fetchAPI<{ message: string }>('/allergy/delete', {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        user_allergy_id: allergyId,
+      }),
+    });
+  },
 };

@@ -16,6 +16,7 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
   const [loading, setLoading] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [deletingIds, setDeletingIds] = useState<Set<number>>(new Set());
 
   const loadAllergies = async () => {
     const accessToken = storage.getAccessToken();
@@ -34,6 +35,21 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
   useEffect(() => {
     loadAllergies();
   }, []);
+
+  const handleRemoveAllergy = (allergyId: number) => {
+    setDeletingIds((prev) => new Set(prev).add(allergyId));
+
+    setTimeout(() => {
+      setAllergies((prevAllergies) =>
+        prevAllergies.filter((allergy) => allergy.id !== allergyId)
+      );
+      setDeletingIds((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(allergyId);
+        return newSet;
+      });
+    }, 300);
+  };
 
   return (
     <div className="h-full w-full relative bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 overflow-y-auto overflow-x-hidden no-scrollbar">
@@ -62,11 +78,16 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
               allergen={allergy.allergen}
               severity={allergy.severity}
               editActive={isActive}
+              onRemove={handleRemoveAllergy}
+              isDeleting={deletingIds.has(allergy.id)}
             />
           ))
         )}
 
-        <div className="flex gap-[1rem] mt-[1rem] mb-[1rem] w-full justify-center">
+        <div
+          key={allergies.length}
+          className="flex gap-[1rem] mt-[1rem] mb-[1rem] w-full justify-center transition-all duration-300 ease-in-out"
+        >
           <button
             onClick={() => setIsActive(!isActive)}
             className="w-[3rem] h-[3rem] backdrop-blur-sm border border-white/50 rounded-full flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all"
