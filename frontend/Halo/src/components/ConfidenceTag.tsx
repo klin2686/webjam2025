@@ -6,11 +6,11 @@ interface ConfidenceTagProps {
 const ConfidenceTag = ({ confidence, text }: ConfidenceTagProps) => {
   const getConfidenceColor = (confidence: number) => {
     if (confidence > 7.5) {
-      return "bg-[rgba(255,80,80,0.44)]"; // Green
+      return "bg-[rgba(183,255,83,0.44)]"; // Green
     } else if (confidence > 2.5) {
       return "bg-[rgba(255,170,80,0.44)]"; // Orange
     } else {
-      return "bg-[rgba(183,255,83,0.44)]"; // Red
+      return "bg-[rgba(255,80,80,0.44)]"; // Red
     }
   };
 
