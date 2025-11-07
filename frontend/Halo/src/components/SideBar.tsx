@@ -113,37 +113,10 @@ const SideBar = () => {
               isLifted={isLifted}
             />
           </div>
-          <div
-            ref={(el) => {
-              elementsRef.current["My Allergies"] = el;
-            }}
-          >
-            <SideBarElement
-              element="My Allergies"
-              logo={sidebarAllergies}
-              onClick={() => setActiveElement("My Allergies")}
-              active={activeElement === "My Allergies"}
-              isLifted={isLifted}
-            />
-          </div>
 
           <br></br>
           <div className="flex justify-center w-full">
             <hr className="w-9/10 justify-center pt-[1rem] opacity-40"></hr>
-          </div>
-
-          <div
-            ref={(el) => {
-              elementsRef.current["Settings"] = el;
-            }}
-          >
-            <SideBarElement
-              element="Settings"
-              logo={sidebarSettings}
-              onClick={() => setActiveElement("Settings")}
-              active={activeElement === "Settings"}
-              isLifted={isLifted}
-            />
           </div>
           <div
             ref={(el) => {
