@@ -24,14 +24,27 @@ const FoodItems = ({ items, allergies }: FoodItemsProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const enrichedItems = useMemo<EnrichedFoodItem[]>(() => {
-    return items.map(item => ({
+    return items.map((item) => ({
       ...item,
-      allergens: item.allergens.map(allergenName => {
-        const userAllergy = allergies.find(
-          a => a.allergen.toLowerCase() === allergenName.toLowerCase()
-        );
-        return [allergenName, userAllergy?.severity || "none"] as [string, string];
-      })
+      allergens: item.allergens
+        .map((allergenName) => {
+          const userAllergy = allergies.find(
+            (a) => a.allergen.toLowerCase() === allergenName.toLowerCase()
+          );
+          return [allergenName, userAllergy?.severity || "none"] as [
+            string,
+            string
+          ];
+        })
+        .sort((a, b) => {
+          const severityOrder: { [key: string]: number } = {
+            none: 0,
+            mild: 1,
+            moderate: 2,
+            severe: 3,
+          };
+          return severityOrder[a[1]] - severityOrder[b[1]];
+        }),
     }));
   }, [items, allergies]);
 
