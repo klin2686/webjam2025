@@ -164,7 +164,7 @@ export interface MenuItem {
 export type MenuProcessResponse = MenuItem[];
 
 export const menuAPI = {
-  processMenuImage: async (imageFile: File): Promise<MenuProcessResponse> => {
+  processMenuImage: async (accessToken: string, imageFile: File): Promise<MenuProcessResponse> => {
     const formData = new FormData();
     formData.append('menu_image', imageFile);
 
@@ -174,6 +174,9 @@ export const menuAPI = {
       const response = await fetch(url, {
         method: 'POST',
         body: formData,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
 
       const data = await response.json();
@@ -194,10 +197,13 @@ export const menuAPI = {
     }
   },
 
-  processManualInput: async (menuItems: string[]): Promise<MenuProcessResponse> => {
+  processManualInput: async (accessToken: string, menuName: string, menuItems: string[]): Promise<MenuProcessResponse> => {
     return fetchAPI<MenuProcessResponse>('/process-manual-input', {
       method: 'POST',
-      body: JSON.stringify({ menu_items: menuItems }),
+      body: JSON.stringify({ menu_name: menuName, menu_items: menuItems }),
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
   },
 };

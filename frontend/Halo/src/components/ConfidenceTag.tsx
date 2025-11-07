@@ -16,11 +16,11 @@ const ConfidenceTag = ({ confidence, text }: ConfidenceTagProps) => {
 
   const getDotColor = (confidence: number) => {
     if (confidence > 7.5) {
-      return "bg-red-50";
+      return "bg-green-50";
     } else if (confidence > 2.5) {
       return "bg-orange-50";
     } else {
-      return "bg-green-50";
+      return "bg-red-50";
     }
   };
 

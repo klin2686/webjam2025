@@ -1,9 +1,9 @@
 const LoadingSpinner = () => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="bg-white/90 rounded-3xl shadow-2xl backdrop-blur-md outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-12 flex flex-col items-center gap-6 animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+      <div className="bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm border border-white/50 p-12 flex flex-col items-center gap-6 animate-fadeIn">
         <div className="relative w-32 h-32">
-          <div className="absolute inset-0 border-8 border-[#56BECC]/30 border-t-[#56BECC] rounded-full animate-spin"></div>
+          <div className="absolute inset-0 border-8 border-[#56BECC80]/30 border-t-[#56BECC] rounded-full animate-spin"></div>
         </div>
 
         <div className="flex flex-col items-center gap-2">
@@ -13,12 +13,6 @@ const LoadingSpinner = () => {
           <p className="text-sm font-sf-pro text-black/60">
             Analyzing ingredients and allergens
           </p>
-        </div>
-
-        <div className="flex gap-2">
-          <div className="w-2 h-2 bg-[#56BECC] rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
-          <div className="w-2 h-2 bg-[#56BECC] rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></div>
-          <div className="w-2 h-2 bg-[#56BECC] rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></div>
         </div>
       </div>
     </div>
