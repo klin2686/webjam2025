@@ -1,4 +1,3 @@
-from typing import List
 from sqlalchemy import String, Integer
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.extensions import db
@@ -15,7 +14,7 @@ class Allergen(db.Model):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(100), unique=True, nullable=False, index=True)
-    users: Mapped[List['UserAllergy']] = relationship('UserAllergy', back_populates='allergen', cascade='all, delete-orphan')
+    users: Mapped[list['UserAllergy']] = relationship('UserAllergy', back_populates='allergen', cascade='all, delete-orphan')
 
     def __init__(self, name: str):
         self.name = name

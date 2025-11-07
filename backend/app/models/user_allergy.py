@@ -13,8 +13,8 @@ class UserAllergy(db.Model):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     severity: Mapped[int] = mapped_column(Integer, CheckConstraint('severity >= 1 AND severity <= 3'), nullable=False)
-    user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'), index=True)
-    allergen_id: Mapped[int] = mapped_column(Integer, ForeignKey('allergens.id'), index=True)
+    user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'), index=True, nullable=False)
+    allergen_id: Mapped[int] = mapped_column(Integer, ForeignKey('allergens.id'), index=True, nullable=False)
     user: Mapped['User'] = relationship('User', back_populates='allergens')
     allergen: Mapped['Allergen'] = relationship('Allergen', back_populates='users')
 
