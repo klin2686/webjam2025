@@ -183,6 +183,8 @@ def process_manual(current_user):
         return jsonify({'error': 'Menu items must be strings'}), 400
 
     upload_name = data.get('menu_name', 'Untitled Manual Menu Input')
+    if upload_name.strip() == '':
+        upload_name = 'Untitled Manual Menu Input'
 
     client = genai.Client()
     response = client.models.generate_content(
