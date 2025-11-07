@@ -32,7 +32,7 @@ const MiniHistory = ({ onHistoryItemClick, onSeeAllClick }: MiniHistoryProps) =>
     }
 
     try {
-      const API_BASE_URL = 'https://wj-api-dev-ff3daf2f73bd.herokuapp.com/api';
+      const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
       const response = await fetch(`${API_BASE_URL}/menu-uploads?limit=2`, {
         method: 'GET',
         headers: {
