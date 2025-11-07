@@ -201,3 +201,56 @@ export const menuAPI = {
     });
   },
 };
+
+// Allergy API
+export interface AllergyItem {
+  id: number;
+  user_id: number;
+  allergen_id: number;
+  allergen_name: string;
+  severity: number;
+}
+
+export interface AllergyResponse {
+  message: string;
+  user_allergy: AllergyItem[];
+}
+
+export interface AddAllergyResponse {
+  message: string;
+  user_allergy: {
+    id: number;
+    user_id: number;
+    allergen_id: number;
+    severity: number;
+    allergen_name: string;
+  };
+}
+
+export const allergyAPI = {
+  getAllergies: async (accessToken: string): Promise<AllergyResponse> => {
+    return fetchAPI<AllergyResponse>('/allergy/get', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+  },
+
+  addAllergy: async (
+    accessToken: string,
+    allergenName: string,
+    severity: number
+  ): Promise<AddAllergyResponse> => {
+    return fetchAPI<AddAllergyResponse>('/allergy/add', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        allergen_name: allergenName.toLowerCase(),
+        severity: severity,
+      }),
+    });
+  },
+};

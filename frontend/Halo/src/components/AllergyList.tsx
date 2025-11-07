@@ -1,3 +1,5 @@
+import { allergyAPI } from "../utils/api";
+
 export interface Allergy {
   id: number;
   allergen: string;
@@ -17,19 +19,6 @@ export const STANDARD_ALLERGENS = [
   "sesame",
 ];
 
-interface AllergyItem {
-  id: number;
-  allergen_id: number;
-  allergen_name: string;
-  severity: number;
-  user_id: number;
-}
-
-interface AllergyAPIResponse {
-  message: string;
-  user_allergy: AllergyItem[];
-}
-
 const severityToString = (severity: number): string => {
   switch (severity) {
     case 1:
@@ -42,6 +31,20 @@ const severityToString = (severity: number): string => {
       return "mild";
   }
 };
+
+const stringToSeverity = (severity: string): number => {
+  switch (severity.toLowerCase()) {
+    case "mild":
+      return 1;
+    case "moderate":
+      return 2;
+    case "severe":
+      return 3;
+    default:
+      return 1;
+  }
+};
+
 //testpush
 export const defaultAllergyList: Allergy[] = [
   { id: 1, allergen: "Peanuts", severity: "severe" },
@@ -53,20 +56,7 @@ export const fetchAllergies = async (
   accessToken: string
 ): Promise<Allergy[]> => {
   try {
-    const API_BASE_URL =
-      import.meta.env.VITE_API_URL || "http://localhost:5000/api";
-    const response = await fetch(`${API_BASE_URL}/allergy/get`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data: AllergyAPIResponse = await response.json();
+    const data = await allergyAPI.getAllergies(accessToken);
     return data.user_allergy.map((item) => ({
       id: item.id,
       allergen: item.allergen_name,
@@ -76,4 +66,12 @@ export const fetchAllergies = async (
     console.error("Error fetching allergies:", error);
     return defaultAllergyList;
   }
+};
+
+export const addAllergy = async (
+  accessToken: string,
+  allergenName: string,
+  severity: string
+): Promise<void> => {
+  await allergyAPI.addAllergy(accessToken, allergenName, stringToSeverity(severity));
 };

@@ -1,20 +1,25 @@
 import { useState } from "react";
-import { STANDARD_ALLERGENS } from "./AllergyList";
+import { STANDARD_ALLERGENS, addAllergy } from "./AllergyList";
 import type { Allergy } from "./AllergyList";
+import { storage } from "../utils/api";
 
 interface AddAllergyPopupProps {
   isOpen: boolean;
   onClose: () => void;
   existingAllergies: Allergy[];
+  onAllergyAdded?: () => void;
 }
 
 const AddAllergyPopup = ({
   isOpen,
   onClose,
   existingAllergies,
+  onAllergyAdded,
 }: AddAllergyPopupProps) => {
   const [selectedAllergen, setSelectedAllergen] = useState<string>("");
   const [selectedSeverity, setSelectedSeverity] = useState<string>("mild");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   if (!isOpen) return null;
 
@@ -26,12 +31,38 @@ const AddAllergyPopup = ({
     (allergen) => !existingAllergenNames.includes(allergen.toLowerCase())
   );
 
-  const handleSubmit = () => {
-    // This is just for now, functionality has not ben added
-    console.log("Submit:", {
-      allergen: selectedAllergen,
-      severity: selectedSeverity,
-    });
+  const handleSubmit = async () => {
+    if (!selectedAllergen) {
+      setError("Please select an allergen");
+      return;
+    }
+
+    const accessToken = storage.getAccessToken();
+    if (!accessToken) {
+      setError("You must be logged in to add allergies");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      await addAllergy(accessToken, selectedAllergen, selectedSeverity);
+
+      // This is the default state
+      setSelectedAllergen("");
+      setSelectedSeverity("mild");
+
+      if (onAllergyAdded) {
+        onAllergyAdded();
+      }
+
+      onClose();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to add allergy");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -97,12 +128,18 @@ const AddAllergyPopup = ({
           </select>
         </div>
 
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-xl font-sf-pro text-sm">
+            {error}
+          </div>
+        )}
+
         <button
           onClick={handleSubmit}
-          disabled={!selectedAllergen}
+          disabled={!selectedAllergen || isSubmitting}
           className="w-full py-3 bg-sky-500/70 hover:bg-sky-500/90 disabled:bg-gray-400/50 disabled:cursor-not-allowed rounded-xl font-sf-pro font-bold text-white text-lg transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98]"
         >
-          Add Allergy
+          {isSubmitting ? "Adding..." : "Add Allergy"}
         </button>
       </div>
     </div>

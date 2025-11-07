@@ -108,6 +108,7 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
         existingAllergies={allergies}
+        onAllergyAdded={loadAllergies}
       />
     </div>
   );
