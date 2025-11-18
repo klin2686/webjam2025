@@ -1,4 +1,4 @@
-# Backend
+# Halo Backend
 
 This directory contains the Flask-based backend API for the Halo food-allergy application. It implements user authentication, allergy management, menu processing using Google Gemini, and related data models and utilities.
 
