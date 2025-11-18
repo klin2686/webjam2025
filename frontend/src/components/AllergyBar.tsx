@@ -19,7 +19,7 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [deletingIds, setDeletingIds] = useState<Set<number>>(new Set());
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   const loadAllergies = useCallback(async () => {
     const accessToken = storage.getAccessToken();
