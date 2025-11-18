@@ -19,6 +19,8 @@ const SideBarProfile = ({ picture, name }: SideBarProfileProps) => {
           src={picture}
           alt={`${name} profile`}
           className="rounded-full p-[0.25rem]"
+          referrerPolicy="no-referrer"
+          crossOrigin="anonymous"
         />
       </div>
       <div className="text-black font-bold text-xl font-sf-pro py-[1rem]">

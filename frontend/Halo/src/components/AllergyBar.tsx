@@ -105,7 +105,7 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               xmlns="http://www.w3.org/2000/svg"
               className="ml-[0.05rem] -mt-[0.1rem]"
             >
