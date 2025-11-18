@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "../contexts/AuthContext";
 import { storage } from "../utils/api";
@@ -20,7 +20,7 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
   const [isActive, setIsActive] = useState(false);
   const [deletingIds, setDeletingIds] = useState<Set<number>>(new Set());
 
-  const loadAllergies = async () => {
+  const loadAllergies = useCallback(async () => {
     const accessToken = storage.getAccessToken();
     if (!accessToken || !isAuthenticated) {
       setLoading(false);
@@ -32,11 +32,11 @@ const AllergyBar = ({ onAllergiesLoaded }: AllergyBarProps) => {
     setAllergies(data);
     onAllergiesLoaded?.(data);
     setLoading(false);
-  };
+  }, [isAuthenticated, onAllergiesLoaded]);
 
   useEffect(() => {
     loadAllergies();
-  }, []);
+  }, [loadAllergies]);
 
   const handleRemoveAllergy = (allergyId: number) => {
     setDeletingIds((prev) => new Set(prev).add(allergyId));

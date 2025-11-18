@@ -53,7 +53,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           const { user: currentUser } = await authAPI.getCurrentUser(accessToken);
           setUser(currentUser);
           storage.setUser(currentUser);
-        } catch (error) {
+        } catch {
           const refreshToken = storage.getRefreshToken();
           if (refreshToken) {
             try {

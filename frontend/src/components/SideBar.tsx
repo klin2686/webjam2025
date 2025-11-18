@@ -39,7 +39,7 @@ const SideBar = ({ currentScreen, onScreenChange }: SideBarProps) => {
     if (currentScreen && currentScreen !== activeElement) {
       setActiveElement(currentScreen);
     }
-  }, [currentScreen]);
+  }, [currentScreen, activeElement]);
 
   useEffect(() => {
     const activeRef = elementsRef.current[activeElement];

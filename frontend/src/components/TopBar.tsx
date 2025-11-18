@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import haloLogo from "../assets/haloLogo.svg";
 import { logoHoverVariants } from "../utils/animations";
 
-const TopBar = ({}) => {
+const TopBar = () => {
   return (
     <div className="w-full mx-auto h-20 bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 overflow-y overflow-x"
     >
