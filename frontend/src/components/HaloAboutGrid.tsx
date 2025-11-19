@@ -1,5 +1,4 @@
 import { motion, type Variants } from "framer-motion";
-import backgroundImage from "../assets/background.jpg";
 
 // Placeholder image paths - replace with actual Halo feature images
 // import haloMenuScan from "../assets/halo-menu-scan.png";
@@ -50,10 +49,7 @@ const HaloAboutGrid = () => {
   return (
     <section
       id="halo-about-grid"
-      className="py-20 px-4 relative bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
+      className="py-20 px-4 relative"
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-white/25 z-0"></div>

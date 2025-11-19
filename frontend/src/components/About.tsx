@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import backgroundImage from "../assets/background.jpg";
 import haloLogo from "../assets/haloLogo.svg";
 
 interface AboutProps {
@@ -14,10 +13,7 @@ const About = ({ onSignIn }: AboutProps) => {
 
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center px-[2rem] relative overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
+      className="min-h-screen flex flex-col items-center justify-center px-[2rem] relative overflow-hidden"
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-white/25 z-0"></div>
