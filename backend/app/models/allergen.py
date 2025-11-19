@@ -9,15 +9,15 @@ if TYPE_CHECKING:
     from app.models import UserAllergy
 
 STANDARD_ALLERGENS = {
-    'milk',
-    'eggs',
-    'fish',
-    'shellfish',
-    'tree nuts',
-    'peanuts',
-    'wheat',
-    'soybeans',
-    'sesame',
+    'Milk',
+    'Eggs',
+    'Fish',
+    'Shellfish',
+    'Tree Nuts',
+    'Peanuts',
+    'Wheat',
+    'Soybeans',
+    'Sesame',
 }
 
 

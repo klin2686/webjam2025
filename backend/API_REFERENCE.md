@@ -272,14 +272,14 @@ Retrieve all allergies for the current user (ordered by severity, descending).
       "user_id": 1,
       "allergen_id": 2,
       "severity": 3,
-      "allergen_name": "peanuts"
+      "allergen_name": "Peanuts"
     },
     {
       "id": 2,
       "user_id": 1,
       "allergen_id": 5,
       "severity": 2,
-      "allergen_name": "milk"
+      "allergen_name": "Milk"
     }
   ]
 }
@@ -296,21 +296,21 @@ Add a new allergy for the current user.
 **Request Body**:
 ```json
 {
-  "allergen_name": "peanuts",
+  "allergen_name": "Peanuts",
   "severity": 3
 }
 ```
 
 **Valid Allergen Names** (case-insensitive):
-- milk
-- eggs
-- fish
-- shellfish
-- tree nuts
-- peanuts
-- wheat
-- soybeans
-- sesame
+- Milk
+- Eggs
+- Fish
+- Shellfish
+- Tree Nuts
+- Peanuts
+- Wheat
+- Soybeans
+- Sesame
 
 **Severity Levels**:
 - 1: Mild
@@ -326,7 +326,7 @@ Add a new allergy for the current user.
     "user_id": 1,
     "allergen_id": 2,
     "severity": 3,
-    "allergen_name": "peanuts"
+    "allergen_name": "Peanuts"
   }
 }
 ```
@@ -360,7 +360,7 @@ Update the severity of an existing allergy.
     "user_id": 1,
     "allergen_id": 2,
     "severity": 2,
-    "allergen_name": "peanuts"
+    "allergen_name": "Peanuts"
   }
 }
 ```
@@ -422,12 +422,12 @@ menu_image: <image file>
 [
   {
     "item_name": "Grilled Salmon",
-    "common_allergens": ["fish"],
+    "common_allergens": ["Fish"],
     "confidence_score": 10
   },
   {
     "item_name": "Caesar Salad",
-    "common_allergens": ["eggs", "fish", "milk"],
+    "common_allergens": ["Eggs", "Fish", "Milk"],
     "confidence_score": 8
   },
   {
@@ -474,17 +474,17 @@ Process manually entered menu items and identify allergens using Google Gemini A
 [
   {
     "item_name": "Grilled Salmon",
-    "common_allergens": ["fish"],
+    "common_allergens": ["Fish"],
     "confidence_score": 10
   },
   {
     "item_name": "Caesar Salad",
-    "common_allergens": ["eggs", "fish", "milk"],
+    "common_allergens": ["Eggs", "Fish", "Milk"],
     "confidence_score": 8
   },
   {
     "item_name": "Chicken Alfredo",
-    "common_allergens": ["milk", "wheat"],
+    "common_allergens": ["Milk", "Wheat"],
     "confidence_score": 9
   },
   {
@@ -519,7 +519,7 @@ Get all menu uploads for the authenticated user.
     "analysis_result": [
       {
         "item_name": "Grilled Salmon",
-        "common_allergens": ["fish"],
+        "common_allergens": ["Fish"],
         "confidence_score": 10
       }
     ],
@@ -532,7 +532,7 @@ Get all menu uploads for the authenticated user.
     "analysis_result": [
       {
         "item_name": "Caesar Salad",
-        "common_allergens": ["eggs", "fish", "milk"],
+        "common_allergens": ["Eggs", "Fish", "Milk"],
         "confidence_score": 8
       }
     ],
@@ -564,7 +564,7 @@ Get a specific menu upload by ID.
   "analysis_result": [
     {
       "item_name": "Grilled Salmon",
-      "common_allergens": ["fish"],
+      "common_allergens": ["Fish"],
       "confidence_score": 10
     }
   ],
@@ -603,7 +603,7 @@ Rename a menu upload.
   "analysis_result": [
     {
       "item_name": "Grilled Salmon",
-      "common_allergens": ["fish"],
+      "common_allergens": ["Fish"],
       "confidence_score": 10
     }
   ],
@@ -665,7 +665,7 @@ Delete a menu upload.
   "user_id": 1,
   "allergen_id": 2,
   "severity": 3,
-  "allergen_name": "peanuts"
+  "allergen_name": "Peanuts"
 }
 ```
 
@@ -674,7 +674,7 @@ Delete a menu upload.
 ```json
 {
   "item_name": "Grilled Salmon",
-  "common_allergens": ["fish"],
+  "common_allergens": ["Fish"],
   "confidence_score": 10
 }
 ```
@@ -689,7 +689,7 @@ Delete a menu upload.
   "analysis_result": [
     {
       "item_name": "Grilled Salmon",
-      "common_allergens": ["fish"],
+      "common_allergens": ["Fish"],
       "confidence_score": 10
     }
   ],
@@ -721,12 +721,12 @@ Common HTTP status codes:
 ## Standard Allergens
 
 The API recognizes these standard allergens (case-insensitive):
-- milk
-- eggs
-- fish
-- shellfish
-- tree nuts
-- peanuts
-- wheat
-- soybeans
-- sesame
+- Milk
+- Eggs
+- Fish
+- Shellfish
+- Tree Nuts
+- Peanuts
+- Wheat
+- Soybeans
+- Sesame

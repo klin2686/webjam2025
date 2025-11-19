@@ -58,8 +58,11 @@ gemini_image_prompt = (
     'Extract all food items from this menu image. For each item, identify common allergens '
     'from this set (spelled and capitalized as shown in the set): ' + str(STANDARD_ALLERGENS) + '. '
     'Use "None" if no common allergens are present and "Unknown" if uncertain from the name alone. '
+    'It is better to be overcautious and list "Unknown" than to miss a potential allergen. '
+    'Be conservative with the confidence scores. '
+    'When using "Unknown" or "None", ensure it is the only allergen listed for that item. '
     'Also for each item, include a confidence score from 1 to 10 (inclusive) on how confident you are in the listed allergens for that item. '
-    'If any item is labeled as unknown, the confidence score should be zero. '
+    'If any item is labeled as "Unknown", the confidence score should be 0. '
     'If the menu is unreadable (cannot accurately extract 90+% of the items), return a single object array with "__ERROR__" in all properties.'
 )
 gemini_text_prompt = (

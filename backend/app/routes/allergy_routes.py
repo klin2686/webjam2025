@@ -36,7 +36,7 @@ def add_allergy(current_user):
 
     allergen_name = data.get('allergen_name')
     if isinstance(allergen_name, str):
-        allergen_name = allergen_name.strip().lower()
+        allergen_name = allergen_name.strip().title()
     else:
         return jsonify({'error': 'allergen_name must be a string'}), 400
     if not allergen_name:
