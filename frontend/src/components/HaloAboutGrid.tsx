@@ -1,5 +1,4 @@
 import { motion, type Variants } from "framer-motion";
-import backgroundImage from "../assets/background.jpg";
 
 // Placeholder image paths - replace with actual Halo feature images
 // import haloMenuScan from "../assets/halo-menu-scan.png";
@@ -50,23 +49,20 @@ const HaloAboutGrid = () => {
   return (
     <section
       id="halo-about-grid"
-      className="min-h-screen pb-20 px-4 relative bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
+      className="py-20 px-4 relative"
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-white/25 z-0"></div>
 
-      <div className="max-w-7xl mx-auto space-y-32 relative z-10">
+      <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         {/* First Hero Section - AI-Powered Menu Analysis */}
         <motion.div
-          className="flex items-center min-h-screen"
+          className="flex items-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div className="w-full flex flex-col lg:flex-row-reverse items-center justify-between gap-16">
+          <div className="w-full flex flex-col lg:flex-row-reverse items-center justify-between gap-12">
             <motion.div
               className="max-w-lg lg:ml-auto"
               variants={containerVariants}
@@ -165,12 +161,12 @@ const HaloAboutGrid = () => {
 
         {/* Second Hero Section - Personalized Allergy Management */}
         <motion.div
-          className="flex items-center min-h-screen"
+          className="flex items-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-16">
+          <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12">
             <motion.div
               className="max-w-lg lg:mr-auto"
               variants={containerVariants}
@@ -262,7 +258,7 @@ const HaloAboutGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8 }}
-          className="text-center py-20"
+          className="text-center py-12"
         >
           <div className="bg-white/50 backdrop-blur-sm rounded-3xl shadow-2xl outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-12 max-w-3xl mx-auto">
             <h3 className="text-5xl font-bold text-black mb-4 font-sf-pro">

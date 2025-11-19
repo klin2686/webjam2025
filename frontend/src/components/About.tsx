@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import backgroundImage from "../assets/background.jpg";
 import haloLogo from "../assets/haloLogo.svg";
 
 interface AboutProps {
@@ -13,25 +12,20 @@ const About = ({ onSignIn }: AboutProps) => {
   };
 
   return (
-    <section
-      className="min-h-screen flex flex-col items-center justify-center px-[2rem] relative overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-    >
+    <section className="min-h-screen flex flex-col items-center justify-center px-[2rem] relative overflow-hidden">
       {/* Background overlay */}
       <div className="absolute inset-0 bg-white/25 z-0"></div>
 
       {/* Animated background circles with glassmorphism */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-[#56BECC]/20 rounded-full backdrop-blur-xl filter blur-2xl"
+        className="absolute top-20 w-72 h-72 bg-[#56BECC]/20 rounded-full backdrop-blur-xl filter blur-2xl"
         animate={{
           scale: [1, 1.2, 1],
           x: [0, 50, 0],
           y: [0, 30, 0],
         }}
         transition={{
-          duration: 8,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -50,7 +44,20 @@ const About = ({ onSignIn }: AboutProps) => {
         }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-200/15 rounded-full backdrop-blur-xl filter blur-2xl"
+        className="absolute bottom-20 left-10 w-72 h-72 bg-sky-300/20 rounded-full backdrop-blur-xl filter blur-2xl"
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [0, -30, 0],
+          y: [0, -50, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute top-1/2 left-1/2 -ml-48 w-96 h-96 bg-blue-200/15 rounded-full backdrop-blur-xl filter blur-2xl"
         animate={{
           scale: [1, 1.3, 1],
           rotate: [0, 180, 360],
@@ -142,7 +149,10 @@ const About = ({ onSignIn }: AboutProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(86, 190, 204, 0.5)" }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0 25px 50px -12px rgba(86, 190, 204, 0.5)",
+          }}
           whileTap={{ scale: 0.95 }}
         >
           Sign In

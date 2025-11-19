@@ -6,17 +6,16 @@ export interface Allergy {
   severity: string;
 }
 
-// Standard allergens from backend
 export const STANDARD_ALLERGENS = [
-  "milk",
-  "eggs",
-  "fish",
-  "shellfish",
-  "tree nuts",
-  "peanuts",
-  "wheat",
-  "soybeans",
-  "sesame",
+  "Milk",
+  "Eggs",
+  "Fish",
+  "Shellfish",
+  "Tree nuts",
+  "Peanuts",
+  "Wheat",
+  "Soybeans",
+  "Sesame",
 ];
 
 const severityToString = (severity: number): string => {
@@ -73,5 +72,9 @@ export const addAllergy = async (
   allergenName: string,
   severity: string
 ): Promise<void> => {
-  await allergyAPI.addAllergy(accessToken, allergenName, stringToSeverity(severity));
+  await allergyAPI.addAllergy(
+    accessToken,
+    allergenName,
+    stringToSeverity(severity)
+  );
 };
