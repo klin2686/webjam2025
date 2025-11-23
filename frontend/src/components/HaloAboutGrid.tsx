@@ -57,7 +57,7 @@ const HaloAboutGrid = () => {
       <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         {/* First Hero Section - AI-Powered Menu Analysis */}
         <motion.div
-          className="flex items-center"
+          className="flex items-center px-[1rem] py-[3rem]"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
@@ -116,13 +116,13 @@ const HaloAboutGrid = () => {
               </motion.div>
             </motion.div>
             <motion.figure
-              className="lg:mr-auto"
+              className="w-full max-w-[400px] lg:mr-auto"
               variants={fadeInLeft}
               whileHover={{ scale: 1.03, y: -5 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="relative">
-                <div className="w-[500px] h-[600px] bg-white/50 backdrop-blur-sm rounded-3xl shadow-2xl outline outline-1 outline-offset-[-0.0625rem] outline-white/50 flex items-center justify-center">
+                <div className="aspect-[5/6] bg-white/50 backdrop-blur-sm rounded-3xl shadow-2xl outline outline-1 outline-offset-[-0.0625rem] outline-white/50 flex items-center justify-center">
                   {/* Placeholder for menu scan image */}
                   <div className="text-center p-8">
                     <div className="text-6xl mb-4">📱</div>
@@ -149,7 +149,7 @@ const HaloAboutGrid = () => {
 
         {/* Second Hero Section - Personalized Allergy Management */}
         <motion.div
-          className="flex items-center"
+          className="flex items-center px-[1rem] py-[3rem]"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
@@ -168,13 +168,13 @@ const HaloAboutGrid = () => {
               </motion.div>
               <motion.h2
                 variants={childVariants}
-                className="text-6xl font-bold text-black mb-6 font-sf-pro hover:text-sky-500 transition-colors duration-300"
+                className="text-3xl min-[355px]:text-4xl sm:text-5xl min-[550px]:text-6xl font-bold text-black mb-6 font-sf-pro hover:text-sky-500 transition-colors duration-300"
               >
                 Your Allergies, Your Safety
               </motion.h2>
               <motion.p
                 variants={childVariants}
-                className="text-xl text-black/70 font-sf-pro mb-6"
+                className="text-sm min-[355px]:text-base sm:text-lg md:text-xl text-black/70 font-sf-pro mb-6"
               >
                 Build your personalized allergy profile with severity levels,
                 and watch as Halo instantly matches detected allergens against
@@ -183,7 +183,7 @@ const HaloAboutGrid = () => {
               </motion.p>
               <motion.p
                 variants={childVariants}
-                className="text-lg text-black/60 font-sf-pro"
+                className="text-sm min-[355px]:text-base sm:text-lg md:text-xl text-black/60 font-sf-pro"
               >
                 Search through menu items, filter by allergen, and keep a
                 complete history of analyzed menus – dining out has never been
@@ -208,13 +208,13 @@ const HaloAboutGrid = () => {
               </motion.div>
             </motion.div>
             <motion.figure
-              className="lg:ml-auto"
+              className="w-full max-w-[400px] lg:mr-auto"
               variants={fadeInRight}
               whileHover={{ scale: 1.03, y: -5 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="relative">
-                <div className="w-[500px] h-[600px] bg-white/50 backdrop-blur-sm rounded-3xl shadow-2xl outline outline-1 outline-offset-[-0.0625rem] outline-white/50 flex items-center justify-center">
+                <div className="aspect-[5/6] bg-white/50 backdrop-blur-sm rounded-3xl shadow-2xl outline outline-1 outline-offset-[-0.0625rem] outline-white/50 flex items-center justify-center">
                   {/* Placeholder for allergy matching image */}
                   <div className="text-center p-8">
                     <div className="text-6xl mb-4">🎨</div>
@@ -246,18 +246,18 @@ const HaloAboutGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8 }}
-          className="text-center py-12"
+          className="py-12 px-[1rem]"
         >
-          <div className="bg-white/50 backdrop-blur-sm rounded-3xl shadow-2xl outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-12 max-w-3xl mx-auto">
-            <h3 className="text-5xl font-bold text-black mb-4 font-sf-pro">
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-3xl shadow-2xl outline outline-1 outline-offset-[-0.0625rem] outline-white/50 p-12 max-w-3xl mx-auto">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 font-sf-pro">
               Ready to dine with confidence?
             </h3>
-            <p className="text-xl text-black/70 font-sf-pro mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-black/70 font-sf-pro mb-8">
               Join thousands of users who trust Halo to keep them safe while
               enjoying their favorite restaurants.
             </p>
             <motion.button
-              className="bg-[#56BECC] hover:bg-[#56BECC]/80 text-white font-sf-pro font-bold text-lg px-8 py-4 rounded-xl shadow-xl transition-all cursor-pointer"
+              className="bg-[#56BECC] hover:bg-[#56BECC]/80 text-white font-sf-pro font-bold text-base md:text-lg px-8 py-2 sm:py-3 md:py-4 rounded-xl shadow-xl transition-all cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
