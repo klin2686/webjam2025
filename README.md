@@ -12,9 +12,13 @@
 
 # About
 
-**The Problem:** Severe allergic reactions in restaurants are alarmingly common, yet many menus lack complete allergen information. Restaurant staff are often misinformed or simply don't have access to detailed ingredient lists, putting diners with food allergies at risk.
+### The Problem
 
-**The Solution:** Halo is an AI-powered food allergy management application that helps users safely navigate restaurant menus. Simply upload a menu photo or enter items manually, and Halo uses Google Gemini AI to identify potential allergens in each dish. Results are personalized with color-coded highlighting based on your specific allergy profile, giving you peace of mind when dining out.
+Severe allergic reactions in restaurants are alarmingly common, yet many menus lack complete allergen information. Restaurant staff are often misinformed or simply don't have access to detailed ingredient lists, putting diners with food allergies at risk.
+
+### The Solution
+
+Halo is an AI-powered food allergy management application that helps users safely navigate restaurant menus. Simply upload a menu photo or enter items manually, and Halo uses Google Gemini AI to identify potential allergens in each dish. Results are personalized with color-coded highlighting based on your specific allergy profile, giving you peace of mind when dining out.
 
 ### Why Halo?
 
@@ -75,7 +79,7 @@
 
 # Tech Stack
 
-## Backend
+### Backend
 
 | Technology | Purpose |
 |------------|---------|
@@ -90,7 +94,7 @@
 | **Gunicorn** | Production WSGI server |
 | **Flask-CORS** | Cross-origin resource sharing |
 
-## Frontend
+### Frontend
 
 | Technology | Purpose |
 |------------|---------|
@@ -100,7 +104,7 @@
 | **Tailwind CSS** | Utility-first styling |
 | **Framer Motion** | Animation library |
 
-## Deployment & Infrastructure
+### Deployment & Infrastructure
 
 - **Backend Hosting**: Heroku with PostgreSQL add-on
 - **Frontend Hosting**: Vercel
@@ -108,7 +112,7 @@
 
 # Getting Started
 
-## Prerequisites
+### Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -123,7 +127,7 @@ You'll also need API keys:
   - Obtain OAuth 2.0 credentials (web application)
   - Generate Gemini API key
 
-## Installation
+### Installation
 
 1. **Clone the repository**
 
@@ -138,7 +142,7 @@ You'll also need API keys:
 
 # Usage
 
-## Quick Start Guide
+### Quick Start Guide
 
 1. **Create an account** or sign in with Google
 
@@ -161,7 +165,7 @@ You'll also need API keys:
    - Give your menus a custom name in the History page
    - Access saved menus anytime
 
-## Common Use Cases
+### Common Use Cases
 
 - **Restaurant Dining**: Quickly scan menus before ordering
 - **Takeout Orders**: Verify allergen information when ordering delivery
