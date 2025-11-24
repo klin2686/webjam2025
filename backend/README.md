@@ -98,4 +98,4 @@ Flask-based RESTful API for the Halo food allergy management application.
 
 ## Notes
 
-If you need more details about specific endpoints, see `API_REFERENCE.md` in this directory.
+If you need more details about specific endpoints, see [API_REFERENCE.md](API_REFERENCE.md) in this directory.
