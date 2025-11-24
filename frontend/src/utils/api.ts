@@ -231,6 +231,16 @@ export const menuAPI = {
       },
     });
   },
+
+  renameMenuHistory: async (accessToken: string, uploadId: number, newName: string): Promise<MenuHistoryItem> => {
+    return fetchAPI<MenuHistoryItem>(`/menu-uploads/${uploadId}`, {
+      method: 'PUT',
+      body: JSON.stringify({ upload_name: newName }),
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+  },
 };
 
 // Allergy API

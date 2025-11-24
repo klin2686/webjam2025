@@ -96,6 +96,20 @@ const History = () => {
     }
   };
 
+  const handleRenameHistoryItem = async (id: number, newName: string) => {
+    const accessToken = storage.getAccessToken();
+    if (!accessToken) return;
+
+    try {
+      const updatedItem = await menuAPI.renameMenuHistory(accessToken, id, newName);
+      setMenuHistory((prev) =>
+        prev.map((item) => (item.id === id ? updatedItem : item))
+      );
+    } catch (error) {
+      console.error("Error renaming history item:", error);
+    }
+  };
+
   return (
     <>
       <div className="h-full w-full flex flex-col relative bg-white/50 rounded-3xl shadow-xl backdrop-blur-sm outline outline-1 outline-offset-[-0.0625rem] outline-white/50 overflow-y-auto">
@@ -168,6 +182,7 @@ const History = () => {
                 onCardClick={() => !isActive && setSelectedHistoryItem(item)}
                 editActive={isActive}
                 onRemove={handleRemoveHistoryItem}
+                onRename={handleRenameHistoryItem}
                 isDeleting={deletingIds.has(item.id)}
               />
             ))}
