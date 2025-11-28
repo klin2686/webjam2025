@@ -78,7 +78,7 @@ const UserLogin = () => {
 
   return (
     <div
-      className="h-screen w-screen flex items-center justify-center bg-cover bg-center bg-no-repeat bg-fixed relative"
+      className="min-h-screen w-screen flex items-center justify-center bg-cover bg-center bg-fixed relative py-[1rem]"
       style={{
         backgroundImage: `url(${backgroundImage})`,
       }}
@@ -96,7 +96,7 @@ const UserLogin = () => {
             <motion.img
               src={haloLogo}
               alt="Logo"
-              className="w-[8rem] h-[8rem] overflow-x overflow-y"
+              className="w-[6rem] md:w-[8rem] overflow-x overflow-y"
               initial="initial"
               animate="initial"
               whileHover="hover"
